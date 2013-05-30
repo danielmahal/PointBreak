@@ -1,0 +1,88 @@
+@import 'nib'
+@import 'easing'
+
+global-reset()
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial
+    font-size: 18px
+    padding-top: 60px
+}
+
+#overview {
+    .navigation {
+        transform: translateZ(0deg)
+        top: 0
+        left: 0
+        right: 0
+        position: fixed
+        background: #444
+        font-size: 18px
+        color: #aaa
+        line-height: 60px
+
+
+        li {
+            -webkit-transition: height 300ms easeOutExpo
+            cursor: pointer
+            height: 0
+            overflow: hidden
+
+            padding-left: 15px
+            padding-right: @padding-left
+
+            ul {
+                margin: 0 -15px;
+                padding: 10px 0
+                background: #222;
+
+                li {
+                    font-size: 14px
+                    padding-left: 35px
+                    line-height: 45px
+                }
+            }
+
+            &.selected {
+                height: @line-height
+                display: block
+                color: white
+            }
+        }
+
+        &.open li {
+            height: @line-height
+            border-bottom: 2px #666 solid;
+
+            li {
+                border: 0
+            }
+        }
+    }
+
+    .list {
+        li {
+            height: 100px
+            border-bottom: 1px #aaa solid
+        }
+    }
+
+    .loader {
+        display: none
+        background: url(images/loader.gif)
+        width: 32px
+        height: 32px
+        position: absolute
+        top: 50%
+        left: 50%
+        margin-left: -16px
+
+        &.active {
+            display block
+        }
+    }
+}
+
+#detail {
+    display: none
+}

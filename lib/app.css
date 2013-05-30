@@ -1,0 +1,162 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+a img {
+  border: none;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial;
+  font-size: 18px;
+  padding-top: 60px;
+}
+#overview .navigation {
+  -webkit-transform: translateZ(0deg);
+  -moz-transform: translateZ(0deg);
+  -o-transform: translateZ(0deg);
+  -ms-transform: translateZ(0deg);
+  transform: translateZ(0deg);
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background: #444;
+  font-size: 18px;
+  color: #aaa;
+  line-height: 60px;
+}
+#overview .navigation li {
+  -webkit-transition: height 300ms cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: pointer;
+  height: 0;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#overview .navigation li ul {
+  margin: 0 -15px;
+  padding: 10px 0;
+  background: #222;
+}
+#overview .navigation li ul li {
+  font-size: 14px;
+  padding-left: 35px;
+  line-height: 45px;
+}
+#overview .navigation li.selected {
+  height: 60px;
+  display: block;
+  color: #fff;
+}
+#overview .navigation.open li {
+  height: 60px;
+  border-bottom: 2px #666 solid;
+}
+#overview .navigation.open li li {
+  border: 0;
+}
+#overview .list li {
+  height: 100px;
+  border-bottom: 1px #aaa solid;
+}
+#overview .loader {
+  display: none;
+  background: url("images/loader.gif");
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -16px;
+}
+#overview .loader.active {
+  display: block;
+}
+#detail {
+  display: none;
+}
+
