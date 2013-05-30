@@ -7,7 +7,7 @@ $(function() {
     var list = overview.find('.list');
     var detailBack = detail.find('.back');
 
-    nav.on('touchstart click', 'li', function(e) {
+    nav.hammer().on('tap', 'li', function(e) {
         e.preventDefault();
         var changed = !$(this).hasClass('selected');
 
@@ -32,7 +32,7 @@ $(function() {
         }
     });
 
-    nav.on('touchstart click', function() {
+    nav.hammer().on('tap', function() {
         nav.toggleClass('open');
     });
 
@@ -56,7 +56,7 @@ $(function() {
         }, 350);
     }
 
-    $(document).on('click', 'a[href^=#]', function(e) {
+    $(document).hammer().on('tap', 'a[href^=#]', function(e) {
         e.preventDefault();
 
         changeSection(e.target.hash.replace('#', ''), $(e.target).hasClass('back'));
