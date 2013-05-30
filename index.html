@@ -3,14 +3,14 @@
 <html>
 <head>
     <title>Surf prototype</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scale=no-scale">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <link href="lib/app.css" rel="stylesheet" />
 </head>
 <body>
-    <section id="overview">
+    <section id="overview" class="section active">
         <nav class="navigation">
             <ul>
                 <li class="selected">Near me</li>
@@ -26,18 +26,18 @@
         </nav>
 
         <ul class="list">
-            <li id="#detail"></li>
-            <li id="#detail"></li>
-            <li id="#detail"></li>
-            <li id="#detail"></li>
-            <li id="#detail"></li>
+            <li><a href="#detail"></a></li>
+            <li><a href="#detail"></a></li>
+            <li><a href="#detail"></a></li>
+            <li><a href="#detail"></a></li>
+            <li><a href="#detail"></a></li>
         </ul>
 
         <div class="loader"></div>
     </section>
 
-    <section id="detail">
-        <header>
+    <section id="detail" class="section">
+        <header class="navigation">
             <nav><a href="#overview" class="back">Near me</a></nav>
         </header>
         <h1>Some header</h1>

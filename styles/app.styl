@@ -3,24 +3,119 @@
 
 global-reset()
 
+navigationHeight = 60px
+
+html, body {
+    width: 100%
+    height: 100%
+    overflow: hidden
+}
+
 body {
     font-family: "Helvetica Neue", Helvetica, Arial
     font-size: 18px
-    padding-top: 60px
+    -webkit-text-size-adjust: 100%
+}
+
+@-webkit-keyframes slideLeftIn {
+    from { -webkit-transform: translateX(100%) }
+    to { -webkit-transform: translateX(0) }
+}
+
+@-webkit-keyframes slideRightIn {
+    from { -webkit-transform: translateX(-100%) }
+    to { -webkit-transform: translateX(0) }
+}
+
+@-webkit-keyframes slideLeftOut {
+    from { -webkit-transform: translateX(0) }
+    to { -webkit-transform: translateX(-100%) }
+}
+
+@-webkit-keyframes slideRightOut {
+    from { -webkit-transform: translateX(0) }
+    to { -webkit-transform: translateX(100%) }
+}
+
+.section {
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    overflow: hidden
+    display: none
+
+    &.active {
+        display: block
+    }
+
+    &.in,
+    &.out {
+        -webkit-animation-duration: 350ms
+        -webkit-animation-fill-mode: both
+        -webkit-animation-timing-function: easeInOut
+    }
+
+    &.in:after {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    &.forward {
+        &.in {
+            -webkit-animation-name: slideLeftIn
+        }
+
+        &.out {
+            -webkit-animation-name: slideLeftOut
+        }
+    }
+
+    &.backward {
+        &.in {
+            -webkit-animation-name: slideRightIn
+        }
+
+        &.out {
+            -webkit-animation-name: slideRightOut
+        }
+    }
+}
+
+.navigation {
+    position: relative
+    background: #444
+    font-size: 18px
+    color: #aaa
+    line-height: navigationHeight
+    min-height: navigationHeight
+
+    .back {
+        position: absolute
+        top: 5px
+        left: 5px
+        bottom: 5px
+        padding: 0 20px
+        color: white
+        text-decoration: none
+        font-size: 14px
+        background: black
+        max-width: 100px
+        border-radius: 5px
+        line-height: navigationHeight - (@top + @bottom)
+    }
 }
 
 #overview {
     .navigation {
-        transform: translateZ(0deg)
-        top: 0
-        left: 0
-        right: 0
-        position: fixed
-        background: #444
-        font-size: 18px
-        color: #aaa
-        line-height: 60px
-
+        position: relative
+        z-index: 2
 
         li {
             -webkit-transition: height 300ms easeOutExpo
@@ -32,9 +127,9 @@ body {
             padding-right: @padding-left
 
             ul {
-                margin: 0 -15px;
+                margin: 0 -15px
                 padding: 10px 0
-                background: #222;
+                background: #222
 
                 li {
                     font-size: 14px
@@ -44,26 +139,41 @@ body {
             }
 
             &.selected {
-                height: @line-height
+                height: navigationHeight
                 display: block
                 color: white
             }
         }
 
-        &.open li {
-            height: @line-height
-            border-bottom: 2px #666 solid;
-
+        &.open {
             li {
-                border: 0
+                height: navigationHeight
+                border-bottom: 2px #666 solid
+
+                li {
+                    border: 0
+                }
             }
         }
     }
 
     .list {
+        position absolute
+        top: navigationHeight
+        left: 0
+        right: 0
+        bottom: 0
+        overflow: scroll
+
         li {
             height: 100px
             border-bottom: 1px #aaa solid
+
+            a {
+                display: block
+                height: 100%
+                width: 100%
+            }
         }
     }
 
@@ -84,5 +194,4 @@ body {
 }
 
 #detail {
-    display: none
 }
