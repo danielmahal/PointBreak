@@ -5,7 +5,9 @@ $(function() {
     var nav = overview.find('.navigation');
     var loader = overview.find('.loader');
     var list = overview.find('.list');
+    var search = overview.find('.search-bar');
     var detailBack = detail.find('.back');
+    var timeline = detail.find('.timeline');
 
     nav.hammer().on('tap', 'li', function(e) {
         e.preventDefault();
@@ -20,13 +22,18 @@ $(function() {
 
             if(isSearch) {
                 list.hide();
+                search.show();
+
+                // search.find('input').focus();
             } else {
                 list.hide();
+                search.hide();
                 loader.show();
 
                 setTimeout(function() {
                     list.show();
                     loader.hide();
+                    list.scrollTop(0);
                 }, 600);
             }
         }
@@ -60,5 +67,28 @@ $(function() {
         e.preventDefault();
 
         changeSection(e.target.hash.replace('#', ''), $(e.target).hasClass('back'));
+    });
+
+    var timelineMove = function(e) {
+        var index = Math.floor((e.originalEvent.touches[0].clientX / window.innerWidth) * 24);
+
+        console.log('Move', index);
+
+        timeline.find('.segment').removeClass('active').eq(index).addClass('active');
+    }
+
+    var timelineEnd = function() {
+        console.log('End');
+        timeline.off('touchmove mousemove', timelineMove);
+        timeline.off('touchend mouseleave', timelineEnd);
+    }
+
+    timeline.on('touchstart mouseenter', function(e) {
+        e.preventDefault();
+        console.log('Start');
+        timeline.on('touchmove mousemove', timelineMove);
+        timeline.on('touchend mouseleave', timelineEnd);
+
+        timelineMove(e);
     });
 });
