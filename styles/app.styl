@@ -6,7 +6,7 @@ global-reset()
 navigationHeight = 60px
 
 a {
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent
 }
 
 html, body {
@@ -49,6 +49,7 @@ body {
     bottom: 0
     overflow: hidden
     display: none
+    padding-top: navigationHeight
 
     &.active {
         display: block
@@ -62,13 +63,13 @@ body {
     }
 
     &.in:after {
-        content: "";
-        position: absolute;
-        display: block;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+        content: ""
+        position: absolute
+        display: block
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
     }
 
     &.forward {
@@ -93,8 +94,11 @@ body {
 }
 
 .navigation {
-    position: relative
-    background: #444
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    background: #333
     font-size: 18px
     color: #aaa
     line-height: navigationHeight
@@ -102,73 +106,139 @@ body {
 
     h1 {
         margin: 0 auto
-        max-width: 100px
+        max-width: 120px
         overflow: hidden
         text-overflow: ellipsis
         text-align: center
         color: white
         font-size: 26px
+        white-space: nowrap
     }
 
     .back {
+        buttonHeight = 40px
+        buttonMargin = (navigationHeight - buttonHeight) / 2
+        arrowSize = buttonHeight / 2;
+
         position: absolute
-        top: 10px
-        left: 10px
+        top: buttonMargin
+        left: arrowSize + 2px
         bottom: 10px
-        padding: 0 10px
+        padding: 0 10px 0 5px
         color: white
         text-decoration: none
         font-size: 14px
         background: black
         max-width: 100px
-        border-radius: 5px
-        line-height: navigationHeight - (@top + @bottom)
+        line-height: buttonHeight
+
+        &:after {
+            position: absolute
+            top: 0
+            left: -(arrowSize)
+            content: " "
+            width: 0
+            height: 0
+            border-top: arrowSize solid transparent
+            border-bottom: arrowSize solid transparent
+            border-right: arrowSize solid @background
+        }
     }
 }
 
 #overview {
     .navigation {
-        position: relative
         z-index: 2
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
 
-        li {
-            -webkit-transition: height 300ms easeOutExpo
-            cursor: pointer
-            height: 0
-            overflow: hidden
+        ul {
+            position: relative
+            z-index: 3
 
-            padding-left: 15px
-            padding-right: @padding-left
-
-            ul {
-                margin: 0 -15px
-                padding: 10px 0
+            li {
+                -webkit-transition: height 200ms easeOutQuart
+                cursor: pointer
+                height: 0
+                overflow: hidden
                 background: #222
 
-                li {
-                    font-size: 14px
-                    padding-left: 35px
-                    line-height: 45px
-                }
-            }
+                padding-left: 15px
+                padding-right: @padding-left
 
-            &.selected {
-                height: navigationHeight
-                display: block
-                color: white
+                ul {
+                    margin: 0 -15px
+                    padding: 10px 0
+                    background: #222
+
+                    li {
+                        font-size: 14px
+                        padding-left: 35px
+                        line-height: 45px
+                    }
+                }
+
+                &.selected {
+                    height: navigationHeight
+                    display: block
+                    color: white
+                    background: #333
+                }
             }
         }
 
+        .overlay {
+            z-index: 2
+            position: fixed;
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            background: rgba(0, 0, 0, 0.7)
+            opacity: 0
+            transition: opacity 120ms linear
+            pointer-events: none
+        }
+
         &.open {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6)
+
             li {
                 height: navigationHeight
-                border-bottom: 2px #666 solid
+                border-bottom: 1px #333 solid
 
                 li {
 
                     border: 0
                 }
             }
+
+            .overlay {
+                opacity: 100
+                pointer-events: auto
+            }
+        }
+    }
+
+    .search-bar {
+        height: 50px
+        background: #666
+        display: none
+        padding: 0 7px
+        line-height: 50px
+
+        input {
+            border-top: 1px #444 solid
+            box-sizing: border-box
+            font-size: 14px
+            width: 100%
+            line-height: @height - 18
+            vertical-align: 2px
+            border-radius: 20px
+            background: white
+            padding: 0 8px
+            border: 0
+            -webkit-appearance: none
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3)
         }
     }
 
@@ -209,4 +279,18 @@ body {
 }
 
 #detail {
+    .timeline {
+        height: 300px
+
+        .segment {
+            height: 100%
+            float: left
+            width: 4.166%
+            background: #ccc
+
+            &.active {
+                background: #ffd800
+            }
+        }
+    }
 }
