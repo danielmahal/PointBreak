@@ -186,6 +186,32 @@ body {
             }
         }
 
+        .handle {
+            width: 60px
+            height: 60px
+            position: absolute
+            top: 0
+            right: 0
+            z-index: 4
+            background-color: #111
+
+
+            .icon {
+                position: absolute
+                top: 0
+                left: 0
+                content: " "
+                width: 100%
+                height: 60px
+
+                background-repeat: no-repeat
+                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><polygon fill='#ddd' points='12.849,13.424 19.397,6.876 16.548,4.025 10,10.575 3.451,4.026 0.602,6.875 10,16.272 '/></svg>");
+                background-size: 20px
+                background-position: center center
+                transition: transform 200ms easeOutQuart
+            }
+        }
+
         .overlay {
             z-index: 2
             position: fixed;
@@ -200,11 +226,10 @@ body {
         }
 
         &.open {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6)
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8)
 
             li {
                 height: navigationHeight
-                border-bottom: 1px #333 solid
 
                 li {
 
@@ -215,6 +240,10 @@ body {
             .overlay {
                 opacity: 100
                 pointer-events: auto
+            }
+
+            .handle .icon {
+                transform: rotate(-180deg)
             }
         }
     }
@@ -279,18 +308,4 @@ body {
 }
 
 #detail {
-    .timeline {
-        height: 300px
-
-        .segment {
-            height: 100%
-            float: left
-            width: 4.166%
-            background: #ccc
-
-            &.active {
-                background: #ffd800
-            }
-        }
-    }
 }
