@@ -6,32 +6,32 @@ global-reset()
 navigationHeight = 50px
 
 a {
-    -webkit-tap-highlight-color: transparent
+  -webkit-tap-highlight-color: transparent
 }
 
 html, body {
-    width: 100%
-    height: 100%
-    overflow: hidden
+  width: 100%
+  height: 100%
+  overflow: hidden
 }
 
 body {
-    font-size: 27px;
-    color: #f4f4f4;
-    line-height: 50px;
-    min-height: 50px;
-    font-family: "GothamNarrow-BlackItalic",Sans-Serif;
-    text-align: center;
+  font-size: 27px;
+  color: #f4f4f4;
+  line-height: 50px;
+  min-height: 50px;
+  font-family: "GothamNarrow-BlackItalic",Sans-Serif;
+  text-align: center;
 
-    font-size: 18px;
+  font-size: 18px;
 
-    -webkit-text-size-adjust: 100%;
-    font-size: 27px;
-	color: #f4f4f4;
-	line-height: 50px;
-	min-height: 50px;
-	font-family: "GothamNarrow-BlackItalic",Sans-Serif;
-	text-align: center;
+  -webkit-text-size-adjust: 100%;
+  font-size: 27px;
+  color: #f4f4f4;
+  line-height: 50px;
+  min-height: 50px;
+  font-family: "GothamNarrow-BlackItalic",Sans-Serif;
+  text-align: center;
 }
 
 *{
@@ -39,189 +39,188 @@ body {
  }
 
 @-webkit-keyframes slideLeftIn {
-    from { -webkit-transform: translateX(100%) }
-    to { -webkit-transform: translateX(0) }
+  from { -webkit-transform: translateX(100%) }
+  to { -webkit-transform: translateX(0) }
 }
 
 @-webkit-keyframes slideRightIn {
-    from { -webkit-transform: translateX(-100%) }
-    to { -webkit-transform: translateX(0) }
+  from { -webkit-transform: translateX(-100%) }
+  to { -webkit-transform: translateX(0) }
 }
 
 @-webkit-keyframes slideLeftOut {
-    from { -webkit-transform: translateX(0) }
-    to { -webkit-transform: translateX(-100%) }
+  from { -webkit-transform: translateX(0) }
+  to { -webkit-transform: translateX(-100%) }
 }
 
 @-webkit-keyframes slideRightOut {
-    from { -webkit-transform: translateX(0) }
-    to { -webkit-transform: translateX(100%) }
+  from { -webkit-transform: translateX(0) }
+  to { -webkit-transform: translateX(100%) }
 }
 
 .section {
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  overflow: hidden
+  display: none
+  padding-top: navigationHeight
+
+  &.active {
+    display: block
+  }
+
+  &.in,
+  &.out {
+    -webkit-animation-duration: 350ms
+    -webkit-animation-fill-mode: both
+    -webkit-animation-timing-function: easeInOut
+  }
+
+  &.in:after {
+    content: ""
     position: absolute
+    display: block
     top: 0
     left: 0
-    right: 0
     bottom: 0
-    overflow: hidden
-    display: none
-    padding-top: navigationHeight
+    right: 0
+  }
 
-    &.active {
-        display: block
+  &.forward {
+    &.in {
+      -webkit-animation-name: slideLeftIn
     }
 
-    &.in,
     &.out {
-        -webkit-animation-duration: 350ms
-        -webkit-animation-fill-mode: both
-        -webkit-animation-timing-function: easeInOut
+      -webkit-animation-name: slideLeftOut
+    }
+  }
+
+  &.backward {
+    &.in {
+      -webkit-animation-name: slideRightIn
     }
 
-    &.in:after {
-        content: ""
-        position: absolute
-        display: block
-        top: 0
-        left: 0
-        bottom: 0
-        right: 0
+    &.out {
+      -webkit-animation-name: slideRightOut
     }
-
-    &.forward {
-        &.in {
-            -webkit-animation-name: slideLeftIn
-        }
-
-        &.out {
-            -webkit-animation-name: slideLeftOut
-        }
-    }
-
-    &.backward {
-        &.in {
-            -webkit-animation-name: slideRightIn
-        }
-
-        &.out {
-            -webkit-animation-name: slideRightOut
-        }
-    }
+  }
 }
 
 .navigation {
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  background: #333
+  font-size: 18px
+  color: #aaa
+  line-height: navigationHeight
+  min-height: navigationHeight
+
+  h1 {
+    margin: 0 auto
+    max-width: 120px
+    overflow: hidden
+    text-overflow: ellipsis
+    text-align: center
+    color: white
+    font-size: 26px
+    white-space: nowrap
+  }
+
+  .back {
+    buttonHeight = 40px
+    buttonMargin = (navigationHeight - buttonHeight) / 2
+    arrowSize = buttonHeight / 2;
+
     position: absolute
-    top: 0
-    left: 0
-    right: 0
-    background: #333
-    font-size: 18px
-    color: #aaa
-    line-height: navigationHeight
-    min-height: navigationHeight
+    top: buttonMargin
+    left: arrowSize + 2px
+    bottom: 10px
+    padding: 0 10px 0 5px
+    color: white
+    text-decoration: none
+    font-size: 14px
+    background: black
+    max-width: 100px
+    line-height: buttonHeight
 
-    h1 {
-        margin: 0 auto
-        max-width: 120px
-        overflow: hidden
-        text-overflow: ellipsis
-        text-align: center
-        color: white
-        font-size: 26px
-        white-space: nowrap
+    &:after {
+      position: absolute
+      top: 0
+      left: -(arrowSize)
+      content: " "
+      width: 0
+      height: 0
+      border-top: arrowSize solid transparent
+      border-bottom: arrowSize solid transparent
+      border-right: arrowSize solid @background
     }
-
-    .back {
-        buttonHeight = 40px
-        buttonMargin = (navigationHeight - buttonHeight) / 2
-        arrowSize = buttonHeight / 2;
-
-        position: absolute
-        top: buttonMargin
-        left: arrowSize + 2px
-        bottom: 10px
-        padding: 0 10px 0 5px
-        color: white
-        text-decoration: none
-        font-size: 14px
-        background: black
-        max-width: 100px
-        line-height: buttonHeight
-
-        &:after {
-            position: absolute
-            top: 0
-            left: -(arrowSize)
-            content: " "
-            width: 0
-            height: 0
-            border-top: arrowSize solid transparent
-            border-bottom: arrowSize solid transparent
-            border-right: arrowSize solid @background
-        }
-    }
+  }
 }
 
-#timeline{
-    font-family:'GothamNarrow-Bold',Sans-Serif;
-    position:fixed;
-    bottom:0px;
-    padding:0px;
-    margin:0px;
-    width: 100%;
-    height:57px;
-    color:#252525;
-    background-size:320px 57px;
-    background-image: url("images/shadow.png");
-}
+#timeline {
+  font-family:'GothamNarrow-Bold',Sans-Serif;
+  position:fixed;
+  bottom:0px;
+  padding:0px;
+  margin:0px;
+  width: 100%;
+  height:57px;
+  color:#252525;
+  background-size:320px 57px;
+  background-image: url("images/shadow.png");
 
-#timeline .label{
+  .label{
     position:absolute;
     text-shadow: 1px 1px 1px rgba(145,145,145, 0.25);
     margin-top:30px;
     margin-left:57px;
     font-size: 10pt;
+  }
 }
 
 #timeline-actuator{
-    position: absolute;
-    -webkit-transform:translateX(0px);
-    -webkit-transition: margin-bottom 300ms;
-    -webkit-transition: margin-left 75ms;
-    -webkit-transition: translateX 75ms;
-    width:76px;
-    height:72px;
-    background-size:76px 72px;
-     -webkit-background-size: 76px 72px;
-    bottom:-17px;
-    margin-bottom: 0px;
-    -webkit-filter: drop-shadow(12px 12px 25px rgba(0,0,0,0.5));
-    background-image: url("images/timeline-actuator.png");
-    text-align: center;
-    color:white;
-}
+  position: absolute;
+  -webkit-transform:translateX(0px);
+  -webkit-transition: margin-bottom 300ms;
+  -webkit-transition: margin-left 75ms;
+  -webkit-transition: translateX 75ms;
+  width:76px;
+  height:72px;
+  background-size:76px 72px;
+   -webkit-background-size: 76px 72px;
+  bottom:-17px;
+  margin-bottom: 0px;
+  -webkit-filter: drop-shadow(12px 12px 25px rgba(0,0,0,0.5));
+  background-image: url("images/timeline-actuator.png");
+  text-align: center;
+  color:white;
 
-#timeline-actuator.pressed{
+  &.pressed{
     margin-bottom:20px;
-}
+  }
 
-#timeline-actuator .time{
+  .time{
     font-size: 14pt;
     text-shadow: 0px -2px 1px rgba(198,83,49, 1);
     font-family:'GothamNarrow-Medium',Sans-Serif;
-}
+  }
 
-#timeline-actuator .day{
-	position:absolute;
+  .day{
+    position:absolute;
     bottom: 4px
     width: 76px
     margin-top:1px;
     font-size: 9pt;
     font-family:'GothamNarrow-Medium',Sans-Serif;
-}
+  }
 
-#timeline-actuator .arrow{
+  .arrow{
     position:absolute;
     background-image: url("images/timeline-actuator-arrow.png");
     background-size: 12px 6px;
@@ -230,9 +229,10 @@ body {
     height:6px;
     top:2px;
     left:32px;
+  }
 }
 
-#timeline-line{
+#timeline-line {
   position:absolute;
   border-left: 2px dashed rgba(0,0,0,0.2);
   top:60px;
@@ -242,184 +242,184 @@ body {
 }
 
 #overview {
-    .navigation {
-        z-index: 2
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
+  .navigation {
+    z-index: 2
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
+
+    ul {
+
+      z-index: 3
+
+      li {
+        -webkit-transition: height 200ms easeOutQuart
+        cursor: pointer
+        height: 0
+        overflow: hidden
+        background: #222
+
+        padding-left: 15px
+        padding-right: @padding-left
 
         ul {
+          margin: 0 -15px
+          padding: 10px 0
+          background: #222
 
-            z-index: 3
-
-            li {
-                -webkit-transition: height 200ms easeOutQuart
-                cursor: pointer
-                height: 0
-                overflow: hidden
-                background: #222
-
-                padding-left: 15px
-                padding-right: @padding-left
-
-                ul {
-                    margin: 0 -15px
-                    padding: 10px 0
-                    background: #222
-
-                    li {
-                        font-size: 14px
-                        padding-left: 35px
-                        line-height: 45px
-                    }
-                }
-
-                &.selected {
-                    height: navigationHeight
-                    display: block
-                    color: white
-                    background: #333
-                    background-size:320px 50px;
- 					background-image:url('images/nav-bar.png');
-                }
-            }
-        }
-
-        .handle {
-            width: 50px
-            height: 50px
-            position: absolute
-            top: 0
-            right: 0
-            z-index: 4
-
-
-            .icon {
-                position: absolute
-                top: 0
-                left: 0
-                content: " "
-                width: 100%
-                height: 60px
-
-                background-repeat: no-repeat
-                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><polygon fill='#ddd' points='12.849,13.424 19.397,6.876 16.548,4.025 10,10.575 3.451,4.026 0.602,6.875 10,16.272 '/></svg>");
-                background-size: 20px
-                background-position: center center
-                transition: transform 200ms easeOutQuart
-            }
-        }
-        .overlay {
-            z-index: 2
-            position: fixed;
-            top: 0
-            left: 0
-            width: 100%
-            height: 100%
-            background: rgba(0, 0, 0, 0.7)
-            opacity: 0
-            transition: opacity 120ms linear
-            pointer-events: none
-        }
-
-        &.open {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8)
-
-            li {
-                height: navigationHeight
-
-                li {
-
-                    border: 0
-                    bottom: 64px;
-  					overflow-y: scroll;
-  					overflow-x:hidden;
-
-                }
-            }
-
-            .overlay {
-                opacity: 100
-                pointer-events: auto
-            }
-
-            .handle .icon {
-                transform: rotate(-180deg)
-            }
-        }
-    }
-
-    .search-bar {
-        height: 50px
-        background: #666
-        display: none
-        padding: 0 7px
-        line-height: 50px
-
-        input {
-            border-top: 1px #444 solid
-            box-sizing: border-box
+          li {
             font-size: 14px
-            width: 100%
-            line-height: @height - 18
-            vertical-align: 2px
-            border-radius: 20px
-            background: white
-            padding: 0 8px
-            border: 0
-            -webkit-appearance: none
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3)
+            padding-left: 35px
+            line-height: 45px
+          }
         }
+
+        &.selected {
+          height: navigationHeight
+          display: block
+          color: white
+          background: #333
+          background-size:320px 50px;
+      background-image:url('images/nav-bar.png');
+        }
+      }
     }
 
-    .list {
-        position absolute
-        top: navigationHeight
+    .handle {
+      width: 50px
+      height: 50px
+      position: absolute
+      top: 0
+      right: 0
+      z-index: 4
+
+
+      .icon {
+        position: absolute
+        top: 0
         left: 0
-        right: 0
-        bottom: 0
-        overflow: scroll
+        content: " "
+        width: 100%
+        height: 60px
+
+        background-repeat: no-repeat
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><polygon fill='#ddd' points='12.849,13.424 19.397,6.876 16.548,4.025 10,10.575 3.451,4.026 0.602,6.875 10,16.272 '/></svg>");
+        background-size: 20px
+        background-position: center center
+        transition: transform 200ms easeOutQuart
+      }
+    }
+    .overlay {
+      z-index: 2
+      position: fixed;
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background: rgba(0, 0, 0, 0.7)
+      opacity: 0
+      transition: opacity 120ms linear
+      pointer-events: none
+    }
+
+    &.open {
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8)
+
+      li {
+        height: navigationHeight
 
         li {
-            height: 100px
-            border-bottom: 1px #aaa solid
 
-            a {
-                display: block
-                height: 100px
-                width: 100%
-                position:relative;
+          border: 0
+          bottom: 64px;
+      overflow-y: scroll;
+      overflow-x:hidden;
 
-                svg{
-                	position:absolute;
-					width: 100%;
-					left:0px;
-					height:100px;
-					bottom:0px;
-					padding:0px;
-					margin:0px;
-					fill:#c7dce0;
-                }
-
-                svg rect.selected{
-					 fill:rgba(69,126,230,0.7);
-            	}
-            }
         }
+      }
+
+      .overlay {
+        opacity: 100
+        pointer-events: auto
+      }
+
+      .handle .icon {
+        transform: rotate(-180deg)
+      }
     }
+  }
 
-    .loader {
-        display: none
-        background: url(images/loader.gif)
-        width: 32px
-        height: 32px
-        position: absolute
-        top: 50%
-        left: 50%
-        margin-left: -16px
+  .search-bar {
+    height: 50px
+    background: #666
+    display: none
+    padding: 0 7px
+    line-height: 50px
 
-        &.active {
-            display block
+    input {
+      border-top: 1px #444 solid
+      box-sizing: border-box
+      font-size: 14px
+      width: 100%
+      line-height: @height - 18
+      vertical-align: 2px
+      border-radius: 20px
+      background: white
+      padding: 0 8px
+      border: 0
+      -webkit-appearance: none
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3)
+    }
+  }
+
+  .list {
+    position absolute
+    top: navigationHeight
+    left: 0
+    right: 0
+    bottom: 0
+    overflow: scroll
+
+    li {
+      height: 100px
+      border-bottom: 1px #aaa solid
+
+      a {
+        display: block
+        height: 100px
+        width: 100%
+        position:relative;
+
+        svg{
+          position:absolute;
+      width: 100%;
+      left:0px;
+      height:100px;
+      bottom:0px;
+      padding:0px;
+      margin:0px;
+      fill:#c7dce0;
         }
+
+        svg rect.selected{
+       fill:rgba(69,126,230,0.7);
+        }
+      }
     }
+  }
+
+  .loader {
+    display: none
+    background: url(images/loader.gif)
+    width: 32px
+    height: 32px
+    position: absolute
+    top: 50%
+    left: 50%
+    margin-left: -16px
+
+    &.active {
+      display block
+    }
+  }
 }
 
 #detail {
