@@ -119,7 +119,7 @@ $(function() {
 			{
 				for(var i=0;i<rects[j].length;i++)
 				{
-					console.log(rects[j][i]);
+					
 					$(rects[j][i]).attr("class","");
 					if(i==index)
 					{
