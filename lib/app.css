@@ -393,7 +393,7 @@ body {
   fill:#c7dce0;
 }
 #overview .list li a svg rect.selected{
-	fill:#457ee6;
+	fill:rgba(69,126,230,0.7);
 }
 #overview .loader {
   display: none;
@@ -431,6 +431,7 @@ body {
 }
 #timeline-actuator{
 	position: absolute;
+	-webkit-transition: left 120ms linear;
 	width:76px;
 	height:72px;
 	background-size:76px 72px;
