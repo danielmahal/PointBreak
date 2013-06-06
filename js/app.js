@@ -7,16 +7,19 @@ $(function() {
     var list = overview.find('.list');
     var search = overview.find('.search-bar');
     var detailBack = detail.find('.back');
+    var timeline_labels=$("#timeline .label");
 
     var loadList = function() {
         list.hide();
         loader.show();
+        
 
         setTimeout(function() {
             list.show();
             loader.hide();
             list.scrollTop(0);
         }, 600);
+        
     }
 
     nav.hammer().on('tap', 'li', function(e) {
@@ -73,4 +76,13 @@ $(function() {
 
         changeSection(e.target.hash.replace('#', ''), $(e.target).hasClass('back'));
     });
+    
+    var initLayout=function(){
+   			timeline_labels.each(function(i){
+   				$(this).css({"left":i*($(window).width()/3)-(parseInt($(this).css("width"))/2)});
+   			});
+   			
+    }
+    
+    initLayout();
 });

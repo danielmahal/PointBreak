@@ -1,0 +1,17 @@
+
+@font-face {
+	font-family: 'GothamNarrow-Bold';
+	src: url('lib/fonts/GothamNarrow-Bold.eot');
+	src: local('☺'), url('fonts/GothamNarrow-Bold.woff') format('woff'), url('fonts/GothamNarrow-Bold.ttf') format('truetype'), url('fonts/GothamNarrow-Bold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'GothamNarrow-Medium';
+	src: url('fonts/GothamNarrow-Medium.eot');
+	src: local('☺'), url('fonts/GothamNarrow-Medium.woff') format('woff'), url('fonts/GothamNarrow-Medium.ttf') format('truetype'), url('fonts/GothamNarrow-Medium.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
