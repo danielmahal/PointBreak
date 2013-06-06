@@ -14,4 +14,14 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'GothamNarrow-BlackItalic';
+	src: url('fonts/GothamNarrow-BlackItalic.eot');
+	src: local('☺'), url('fonts/GothamNarrow-BlackItalic.woff') format('woff'), url('fonts/GothamNarrow-BlackItalic.ttf') format('truetype'), url('fonts/GothamNarrow-BlackItalic.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
 

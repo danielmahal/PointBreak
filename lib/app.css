@@ -189,10 +189,12 @@ body {
   left: 0;
   right: 0;
   background: #333;
-  font-size: 18px;
-  color: #aaa;
-  line-height: 60px;
-  min-height: 60px;
+  font-size: 27px;
+  color: #f4f4f4;
+  line-height: 50px;
+  min-height: 50px;
+  font-family: "GothamNarrow-BlackItalic",Sans-Serif;
+  text-align: center;
 }
 .navigation h1 {
   margin: 0 auto;
@@ -246,7 +248,7 @@ body {
   background: #222;
   padding-left: 15px;
   padding-right: 15px;
-}
+ }
 #overview .navigation ul li ul {
   margin: 0 -15px;
   padding: 10px 0;
@@ -258,19 +260,22 @@ body {
   line-height: 45px;
 }
 #overview .navigation ul li.selected {
-  height: 60px;
+  height: 50px;
   display: block;
   color: #fff;
-  background: #333;
+   background-size:320px 50px;
+  background-image:url('images/nav-bar.png');
+  
+  
 }
 #overview .navigation .handle {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   position: absolute;
   top: 0;
   right: 0;
   z-index: 4;
-  background-color: #111;
+ 
 }
 #overview .navigation .handle .icon {
   position: absolute;
@@ -314,7 +319,7 @@ body {
   box-shadow: 0 2px 20px rgba(0,0,0,0.8);
 }
 #overview .navigation.open li {
-  height: 60px;
+  height: 50px;
 }
 #overview .navigation.open li li {
   border: 0;
