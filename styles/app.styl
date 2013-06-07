@@ -311,14 +311,29 @@ body {
 	right: 0;
 	bottom : 0;
 	overflow: scroll;
-	li  {
 
-		height: 100px;
-		border-bottom : 1px #aaa solid;
+	li  {
 		background-repeat: no-repeat;
 		background-size: 320px 102px;
 		position:relative;
-		.indicator{
+    width: 320px
+    overflow: hidden
+
+    &:last-child {
+      margin-bottom: 30px
+    }
+
+    &:after {
+      content: ""
+      position: absolute
+      left: 0
+      bottom: 0
+      right: 0
+      height: 1px
+      background: rgba(0, 0, 0, 0.3)
+    }
+
+		.indicator {
 			position:absolute;
 			width:65px;
 			top:17px;
@@ -326,11 +341,13 @@ body {
 			height:65px;
 			background-size:65px 65px;
 		}
-		.indicator.swell{
+
+		.indicator.swell {
 			-webkit-transform:rotate(63deg);
 			background-image:url('images/indicator-swell.png');
 		}
-		.indicator.wind{
+
+		.indicator.wind {
 		-webkit-transform:rotate(163deg);
 			background-image:url('images/indicator-wind.png');
 		}
@@ -354,7 +371,7 @@ body {
 
       .graph {
         position: absolute
-        bottom: 0
+        bottom: -1px
         left: -1px
         width: 400px
         height: 30px
@@ -553,34 +570,37 @@ body {
 
       li {
         height: navigationHeight
-		&:last-child{
-			height:150px
-		}
+
+        &:last-child{
+    			height:150px
+    		}
+
         li {
           	border: 0
           	border-bottom: 1px solid rgba(40, 45, 50,0.6)
           	bottom: 64px;
-      		overflow-y: scroll;
-      		overflow-x:hidden;
-      		text-align:left;
-      		padding-left:91px;
-        	.location{
-        		background-image:url('images/tiny-icon-location.png');
-        		background-size:9px 12px;
-        		background-repeat:no-repeat;
-        		padding-left:18px;
-        		font-family:'GothamNarrow-Book', Sans Serif;
-        		font-size:16px;
+        		overflow-y: scroll;
+        		overflow-x:hidden;
+        		text-align:left;
+        		padding-left:91px;
 
-        	}
-        	.spot{
-        		background-image:url('images/tiny-icon-spot.png');
-        		background-size:10px 14px;
-        		background-repeat:no-repeat;
-        		padding-left:18px;
-        		font-family:'GothamNarrow-Book', Sans Serif;
-        		font-size:16px;
-        	}
+          	.location{
+          		background-image:url('images/tiny-icon-location.png');
+          		background-size:9px 12px;
+          		background-repeat:no-repeat;
+          		padding-left:18px;
+          		font-family:'GothamNarrow-Book', Sans Serif;
+          		font-size:16px;
+          	}
+
+          	.spot{
+          		background-image:url('images/tiny-icon-spot.png');
+          		background-size:10px 14px;
+          		background-repeat:no-repeat;
+          		padding-left:18px;
+          		font-family:'GothamNarrow-Book', Sans Serif;
+          		font-size:16px;
+          	}
         }
 
       }
