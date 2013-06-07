@@ -35,6 +35,13 @@
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+	font-family: 'GothamNarrow-Black';
+	src: url('fonts/GothamNarrow-Black.eot');
+	src: local('☺'), url('fonts/GothamNarrow-Black.woff') format('woff'), url('fonts/GothamNarrow-Black.ttf') format('truetype'), url('fonts/GothamNarrow-Black.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
 
 
