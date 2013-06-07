@@ -327,11 +327,6 @@ body {
   text-align: center;
   color: #5c5c5c;
   text-shadow: 0px 1px 0 rgba(255,255,255,0.7);
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
   -webkit-transition: bottom 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -moz-transition: bottom 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -o-transition: bottom 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -401,31 +396,24 @@ body {
 .detail .navigation .fav.highlight {
   background-image: url("images/icon-fav-selected.png");
 }
-.detail .navigation nav {
-  background: none;
-}
 .detail .navigation nav a {
   background: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><polygon fill='#ddd' points='12.849,13.424 19.397,6.876 16.548,4.025 10,10.575 3.451,4.026 0.602,6.875 10,16.272 '/></svg>");
   background-repeat: no-repeat;
-  background-position: left center;
+  background-image: url("images/menu-arrow.png");
+  -webkit-background-size: 15px;
+  -moz-background-size: 15px;
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: center center;
   -webkit-transform: rotate(90deg);
   position: absolute;
-  top: 20px;
-  left: 12px;
-  bottom: 10px;
-  padding: 0 15px 0 5px;
-  color: #fff;
-  text-decoration: none;
-  width: 12px;
-  max-width: 120px;
-  line-height: 40px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 30px;
 }
 .detail .navigation nav a:after {
-  background: none;
-  opacity: 0;
-  filter: alpha(opacity=0);
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  display: none;
 }
 .detail .detail-content {
   position: absolute;
@@ -479,6 +467,7 @@ body {
   right: 0;
   height: 1px;
   background: rgba(0,0,0,0.3);
+  z-index: 4;
 }
 #overview .list li .indicator {
   position: absolute;
@@ -702,16 +691,17 @@ body {
 }
 #overview .navigation .handle .icon {
   position: absolute;
-  top: 0;
-  left: 0;
-  content: " ";
-  width: 100%;
-  height: 60px;
+  top: 50%;
+  left: 50%;
+  margin-left: -7px;
+  margin-top: -7px;
+  width: 15px;
+  height: 15px;
   background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><polygon fill='#ddd' points='12.849,13.424 19.397,6.876 16.548,4.025 10,10.575 3.451,4.026 0.602,6.875 10,16.272 '/></svg>");
-  -webkit-background-size: 20px;
-  -moz-background-size: 20px;
-  background-size: 20px;
+  background-image: url("images/menu-arrow.png");
+  -webkit-background-size: 15px;
+  -moz-background-size: 15px;
+  background-size: 15px;
   background-position: center center;
   -webkit-transition: -webkit-transform 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
   -moz-transition: -moz-transform 200ms cubic-bezier(0.165, 0.84, 0.44, 1);

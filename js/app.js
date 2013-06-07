@@ -39,9 +39,9 @@ $(function() {
     }, 600);
 
   }
-  
+
   $('.navigation .fav').on('tap',function(){$(this).toggleClass('highlight')});
-  
+
   nav.hammer().on('touchstart',function(e){
         e.preventDefault();
 
@@ -90,8 +90,6 @@ $(function() {
       $(this).addClass('selected');
 
       $(e.target).addClass('selected');
-
-      detailBack.text($(this).text());
 
       if (isSearch) {
         list.hide();
@@ -268,7 +266,6 @@ $(function() {
         var wind = Math.round(Math.sin((index / 8) * Math.PI + index) * 12 + 14);
         var windDirection = Math.sin(((index / 30) * Math.PI) + i);
         var swellDirection = Math.sin(((index / 80) * Math.PI) + i * 2) - 2;
-
 
         var item = $(this).closest('li');
 

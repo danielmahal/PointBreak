@@ -224,6 +224,7 @@ body {
   background-image: url("images/timeline.png");
   box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
   z-index: 10
+  // transform: translateZ(0)
 
   .days {
     li {
@@ -246,7 +247,6 @@ body {
     text-align: center;
     color: #5c5c5c;
     text-shadow: 0px 1px 0 rgba(255, 255, 255, 0.7);
-    transform: translateZ(0)
     transition: bottom 200ms easeOutBack
 
     .time {
@@ -301,17 +301,19 @@ body {
 }
 .detail{
   font-family:'GothamNarrow-Bold',Sans-Serif
+
   .navigation{
     font-family: 'GothamNarrow-BlackItalic';
     font-size:27px;
     background-size:320px 50px;
     background-image:url('images/nav-bar.png');
+
     h1{
       max-width:320px
     }
 
-    
-    
+
+
     .fav{
       position:absolute;
       background-size:19px 19px
@@ -324,39 +326,33 @@ body {
         background-image: url('images/icon-fav-selected.png')
       }
     }
-    
-    
+
+
     nav{
       a{
           background:none
-          background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><polygon fill='#ddd' points='12.849,13.424 19.397,6.876 16.548,4.025 10,10.575 3.451,4.026 0.602,6.875 10,16.272 '/></svg>");
-          background-repeat:no-repeat
-          background-position:left center
+          background-repeat: no-repeat
+          background-image: url(images/menu-arrow.png);
+          background-size: 15px
+          background-repeat: no-repeat
+          background-position: center center
           -webkit-transform:rotate(90deg)
           buttonHeight = 40px
           buttonMargin = (navigationHeight - buttonHeight) / 2
           arrowSize = buttonHeight / 2
           position: absolute
-          top: 20px
-          left: 12px
-          bottom: 10px
-          padding: 0 15px 0 5px
-          color: white
-          text-decoration: none
-          width:12px
-          max-width: 120px
-          line-height: buttonHeight
+          top: 0
+          left: 0
+          bottom: 0
+          width: 30px
+
           &:after {
-            background:none
-            opacity:0
-            
+            display: none
           }
         }
-        background:none
-        
     }
   }
-  
+
   .detail-content{
     position:absolute
     top:50px
@@ -365,11 +361,11 @@ body {
     width:320px
     padding:0px
     margin:0px
-    
+
     overflow-x:hidden
     overflow-y:scroll
-    
-    
+
+
     .placeholder{
       position:absolute
       top:0px
@@ -379,7 +375,7 @@ body {
       background-size:320px 998px
       background-repeat:no-repeat
       background-image:url('images/detailed-view.jpg')
-      
+
       overflow:hidden
     }
   }
@@ -414,6 +410,7 @@ body {
       right: 0
       height: 1px
       background: rgba(0, 0, 0, 0.3)
+      z-index: 4
     }
 
 		.indicator {
@@ -667,15 +664,16 @@ body {
 
       .icon {
         position: absolute
-        top: 0
-        left: 0
-        content: " "
-        width: 100%
-        height: 60px
+        top: 50%
+        left: 50%
+        margin-left: -7px
+        margin-top: -7px
+        width: 15px
+        height: 15px
 
         background-repeat: no-repeat
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><polygon fill='#ddd' points='12.849,13.424 19.397,6.876 16.548,4.025 10,10.575 3.451,4.026 0.602,6.875 10,16.272 '/></svg>");
-        background-size: 20px
+        background-image: url(images/menu-arrow.png);
+        background-size: 15px
         background-position: center center
         transition: transform 200ms easeOutQuart
       }
