@@ -116,7 +116,7 @@ body {
   left: 0
   right: 0
   background: #333
-  font-size: 18px
+  font-size: 26px
   color: #aaa
   line-height: navigationHeight
   min-height: navigationHeight
@@ -242,6 +242,124 @@ body {
 }
 
 #overview {
+
+.list{
+	position:absolute;
+	top      : navigationHeight;
+	left : 0;
+	right: 0;
+	bottom : 0;
+	overflow: scroll; 
+	li  {
+		height: 100px;
+		border-bottom : 1px #aaa solid;
+		background-repeat: no-repeat;
+		background-size: 320px 102px;
+		position:relative;
+		.indicator{
+			position:absolute;
+			width:65px;
+			top:17px;
+			left:15px;
+			height:65px;
+			background-size:65px 65px;
+		}
+		.indicator.swell{
+			-webkit-transform:rotate(63deg);
+			background-image:url('images/indicator-swell.png');
+		}
+		.indicator.wind{
+		-webkit-transform:rotate(163deg);
+			background-image:url('images/indicator-wind.png');
+		}
+		a {
+			position:relative;
+			text-decoration:none;
+			text-align:left;
+			
+			color: #4f4f4f;
+			font-family: 'GothamNarrow-Book', Sans Serif;
+			font-size: 21px;
+			display: block;
+			height : 102px;
+			padding-top:2px;
+			
+			span{
+				position:absolute;
+				margin-left:109px;
+				
+			}
+			
+			.datas{
+					position:absolute;
+					margin-left:109px;
+					width:211px;
+					height:25px;
+					top:39px;
+					margin-top:-16px;
+					span{
+						margin-left:0px;
+						background-repeat:no-repeat;
+						position:static;
+						font-size:14px;
+						
+						background-position: left center; 
+						font-family:'GothamNarrow-Light',Sans Serif;
+					}
+					
+					.bold{
+						font-family:'GothamNarrow-Medium',Sans Serif;
+						margin-right:2px;
+					}
+					.icon_wave{
+						color:#3e85ae;
+						margin-right:10px;
+						height:25px;
+						width:25px;
+						padding-left:18px;
+						background-size: 13px 7px;
+						background-image:url('images/detail-wave.png');
+					}
+					.icon_wave_freq{
+						color:#3e85ae;
+						margin-right:13px;
+						padding-left:14px;
+						background-size: 9px 9px;
+						background-image:url('images/detail-freq.png');
+					}
+					.icon_wind{
+						color:#cd3737;
+						margin-right:9px;
+						padding-left:15px;
+						background-size: 10px 10px;
+						background-image:url('images/detail-wind.png');
+					}
+					.list-arrow{
+						position:absolute;
+						top:0px;
+						right:5px;
+						font-family:'GothamNarrow-Book',Sans Serif;
+						font-size:24px;
+						
+					}
+			}
+			svg{
+				position: absolute;
+				width: 100%;
+				left: 0px;
+				height: 100px;
+				bottom: 0px;
+				padding: 0px;
+				margin: 0px;
+				fill: #c7dce0;
+			}
+			svg rect.selected {
+				fill: rgba(69,126,230,0.7);
+			}
+		}
+	}
+	
+}
   .navigation {
     z-index: 2
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
@@ -370,41 +488,9 @@ body {
     }
   }
 
-  .list {
-    position absolute
-    top: navigationHeight
-    left: 0
-    right: 0
-    bottom: 0
-    overflow: scroll
+  
 
-    li {
-      height: 100px
-      border-bottom: 1px #aaa solid
-
-      a {
-        display: block
-        height: 100px
-        width: 100%
-        position:relative;
-
-        svg{
-          position:absolute;
-      width: 100%;
-      left:0px;
-      height:100px;
-      bottom:0px;
-      padding:0px;
-      margin:0px;
-      fill:#c7dce0;
-        }
-
-        svg rect.selected{
-       fill:rgba(69,126,230,0.7);
-        }
-      }
-    }
-  }
+ 
 
   .loader {
     display: none
@@ -420,7 +506,4 @@ body {
       display block
     }
   }
-}
-
-#detail {
 }

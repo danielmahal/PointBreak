@@ -199,7 +199,7 @@ body {
   left: 0;
   right: 0;
   background: #333;
-  font-size: 18px;
+  font-size: 26px;
   color: #aaa;
   line-height: 50px;
   min-height: 50px;
@@ -314,6 +314,125 @@ body {
   height: 100%;
   width: 1px;
   left: 10px;
+}
+#overview .list {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: scroll;
+}
+#overview .list li {
+  height: 100px;
+  border-bottom: 1px #aaa solid;
+  background-repeat: no-repeat;
+  -webkit-background-size: 320px 102px;
+  -moz-background-size: 320px 102px;
+  background-size: 320px 102px;
+  position: relative;
+}
+#overview .list li .indicator {
+  position: absolute;
+  width: 65px;
+  top: 17px;
+  left: 15px;
+  height: 65px;
+  -webkit-background-size: 65px 65px;
+  -moz-background-size: 65px 65px;
+  background-size: 65px 65px;
+}
+#overview .list li .indicator.swell {
+  -webkit-transform: rotate(63deg);
+  background-image: url("images/indicator-swell.png");
+}
+#overview .list li .indicator.wind {
+  -webkit-transform: rotate(163deg);
+  background-image: url("images/indicator-wind.png");
+}
+#overview .list li a {
+  position: relative;
+  text-decoration: none;
+  text-align: left;
+  color: #4f4f4f;
+  font-family: 'GothamNarrow-Book', Sans Serif;
+  font-size: 21px;
+  display: block;
+  height: 102px;
+  padding-top: 2px;
+}
+#overview .list li a span {
+  position: absolute;
+  margin-left: 109px;
+}
+#overview .list li a .datas {
+  position: absolute;
+  margin-left: 109px;
+  width: 211px;
+  height: 25px;
+  top: 39px;
+  margin-top: -16px;
+}
+#overview .list li a .datas span {
+  margin-left: 0px;
+  background-repeat: no-repeat;
+  position: static;
+  font-size: 14px;
+  background-position: left center;
+  font-family: 'GothamNarrow-Light', Sans Serif;
+}
+#overview .list li a .datas .bold {
+  font-family: 'GothamNarrow-Medium', Sans Serif;
+  margin-right: 2px;
+}
+#overview .list li a .datas .icon_wave {
+  color: #3e85ae;
+  margin-right: 10px;
+  height: 25px;
+  width: 25px;
+  padding-left: 18px;
+  -webkit-background-size: 13px 7px;
+  -moz-background-size: 13px 7px;
+  background-size: 13px 7px;
+  background-image: url("images/detail-wave.png");
+}
+#overview .list li a .datas .icon_wave_freq {
+  color: #3e85ae;
+  margin-right: 13px;
+  padding-left: 14px;
+  -webkit-background-size: 9px 9px;
+  -moz-background-size: 9px 9px;
+  background-size: 9px 9px;
+  background-image: url("images/detail-freq.png");
+}
+#overview .list li a .datas .icon_wind {
+  color: #cd3737;
+  margin-right: 9px;
+  padding-left: 15px;
+  -webkit-background-size: 10px 10px;
+  -moz-background-size: 10px 10px;
+  background-size: 10px 10px;
+  background-image: url("images/detail-wind.png");
+}
+#overview .list li a .datas .list-arrow {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  font-family: 'GothamNarrow-Book', Sans Serif;
+  font-size: 24px;
+}
+#overview .list li a svg {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  height: 100px;
+  bottom: 0px;
+  padding: 0px;
+  margin: 0px;
+  fill: #c7dce0;
+}
+#overview .list li a svg rect.selected {
+  fill: rgba(69,126,230,0.7);
 }
 #overview .navigation {
   z-index: 2;
@@ -447,37 +566,6 @@ body {
   -webkit-appearance: none;
   -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-}
-#overview .list {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: scroll;
-}
-#overview .list li {
-  height: 100px;
-  border-bottom: 1px #aaa solid;
-}
-#overview .list li a {
-  display: block;
-  height: 100px;
-  width: 100%;
-  position: relative;
-}
-#overview .list li a svg {
-  position: absolute;
-  width: 100%;
-  left: 0px;
-  height: 100px;
-  bottom: 0px;
-  padding: 0px;
-  margin: 0px;
-  fill: #c7dce0;
-}
-#overview .list li a svg rect.selected {
-  fill: rgba(69,126,230,0.7);
 }
 #overview .loader {
   display: none;

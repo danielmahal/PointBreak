@@ -8,7 +8,7 @@ $(function() {
 	var search = overview.find('.search-bar');
 	var detailBack = detail.find('.back');
 
-	var timeline_labels = $("#timeline .label");
+	var timeline_labels = $('#timeline .label');
 	var timeline_actuator_days = ["TODAY", "TOMORROW", "FRIDAY"];
 	var timeline_actuator_times = ["03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00", "24:00"]
 	var timeline_actuator = $("#timeline-actuator");
@@ -19,6 +19,10 @@ $(function() {
 	
 	timeline_actuator.hW = Math.round(parseInt(timeline_actuator.css("width")) / 2);
 	timeline_actuator.W = parseInt(timeline_actuator.css("width"));
+	
+	var name_locations = ['Achadas da Cruz','Jardim do Mar','Madalena do Mar','Lugar de Baixo'];
+	
+	
 	
 	window.static = {};
 	window.static.wW=$(window).width();
@@ -106,6 +110,19 @@ $(function() {
 				"left" : i * (window.static.wW / 3) - (parseInt($(this).css("width")) / 2)
 			});
 		});
+		
+		$('.list li a').each(function(i){
+			console.log(this);
+			var span=$('<span class="name"></span>').html(name_locations[i])
+			var datas=$('<span class="datas"><span class="icon_wave"><span class="bold">1.5</span>m</span><span class="icon_wave_freq"><span class="bold">12</span>s</span><span class="icon_wind"><span class="bold">12</span>m/s</span><span></span><span class="list-arrow">&rsaquo;</span></span>');
+			
+			span.appendTo($(this));
+			datas.appendTo($(this));
+			i=i+1;
+			
+			$(this).parent().css('background-image','url(lib/images/maps/0'+i+'_map.png)').append('<span class="indicator wind"></span><span class="indicator swell"></span>');
+			
+		});
 
 	}
 	initLayout();
@@ -192,6 +209,7 @@ $(function() {
 			timeline_actuator.css({
 				"-webkit-transform" : "translateX(" + posX + "px)"
 			});
+			
 		}
 		
 		posX=linePosX;
