@@ -115,13 +115,13 @@ $(function() {
     $('.list li a').each(function(i){
       console.log(this);
       var span=$('<span class="name"></span>').html(name_locations[i])
-      var datas=$('<span class="datas"><span class="icon_wave"><span class="bold">1.5</span>m</span><span class="icon_wave_freq"><span class="bold">12</span>s</span><span class="icon_wind"><span class="bold">12</span>m/s</span><span></span><span class="list-arrow">&rsaquo;</span></span>');
+      var datas=$('<span class="datas"><span class="data wave"><span class="bold">1.5</span>m</span><span class="data period"><span class="bold">12</span>s</span><span class="data wind"><span class="bold">12</span>m/s</span><span></span><span class="list-arrow">&rsaquo;</span></span>');
 
       span.appendTo($(this));
       datas.appendTo($(this));
       i=i+1;
 
-      $(this).parent().css('background-image','url(lib/images/maps/0'+i+'_map.png)').append('<span class="indicator wind"></span><span class="indicator swell"></span>');
+      $(this).parent().css('background-image','url(lib/images/maps/0'+i+'_map.png)').append('<span class="indicator swell"></span><span class="indicator wind"></span>');
 
     });
 
@@ -230,6 +230,7 @@ $(function() {
   });
 
   var graphItems = $('.graph .day div');
+  var graphHeight = $('.graph').height();
   var actuatorDay = timelineActuator.find('.day');
   var actuatorTime = timelineActuator.find('.time');
   var currentDayLabel = null;
@@ -256,9 +257,26 @@ $(function() {
 
     if(time !== currentTime) {
       graphItems.removeClass('active');
-      graphs.each(function() {
-        $(this).find('.day div').eq(time + (day * 8)).addClass('active');
+
+      graphs.each(function(i) {
+        var index = time + (day * 8);
+        var selected = $(this).find('.day div').eq(index).addClass('active');
+        var waveHeight = ((parseFloat(selected.get(0).style.height, 10) / 100) * 10).toFixed(1);
+        var period = Math.round(Math.sin((index / 20) * Math.PI + index) * 2 + 10);
+        var wind = Math.round(Math.sin((index / 8) * Math.PI + index) * 12 + 14);
+        var windDirection = Math.sin(((index / 30) * Math.PI) + i);
+        var swellDirection = Math.sin(((index / 80) * Math.PI) + i * 2) - 2;
+
+
+        var item = $(this).closest('li');
+
+        item.find('.datas .wave .bold').text(waveHeight);
+        item.find('.datas .period .bold').text(period);
+        item.find('.datas .wind .bold').text(wind);
+        item.find('.indicator.wind').css('transform', 'rotate(' + windDirection + 'rad)');
+        item.find('.indicator.swell').css('transform', 'rotate(' + swellDirection + 'rad)');
       });
+
       currentTime = time;
     }
 

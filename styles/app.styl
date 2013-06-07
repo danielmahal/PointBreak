@@ -223,6 +223,7 @@ body {
   background-size: 320px 44px;
   background-image: url("images/timeline.png");
   box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 10
 
   .days {
     li {
@@ -372,6 +373,7 @@ body {
         left: -1px
         width: 400px
         height: 30px
+        z-index: 1
 
         .day {
           position: relative
@@ -396,49 +398,63 @@ body {
       }
 
 			.datas{
-					position:absolute;
-					margin-left:109px;
-					width:211px;
-					height:25px;
-					top:39px;
-					margin-top:-16px;
-					span{
+          position: absolute
+          left: 0px
+          top: 40px
+          right: 0
+          line-height: 1em
+
+					.data {
 						margin-left:0px;
 						background-repeat:no-repeat;
 						position:static;
 						font-size:14px;
+            display: inline-block
 
 						background-position: left center;
 						font-family:'GothamNarrow-Light',Sans Serif;
+
+            span {
+              margin: 0
+            }
+
+            .bold {
+              position: static
+              margin-right: 4px
+              font-family:'GothamNarrow-Medium', Sans Serif;
+            }
+
+            &.wave {
+              color:#3e85ae;
+              height:20px;
+              width: 45px
+              padding-left: 19px;
+              background-size: 13px 7px;
+              background-image:url('images/detail-wave.png');
+            }
+
+            &.period {
+              color:#3e85ae;
+              width: 34px
+              padding-left:14px;
+              background-size: 9px 9px;
+              background-image:url('images/detail-freq.png');
+            }
+
+            &.wind {
+              color:#cd3737;
+              margin-right:9px;
+              padding-left:15px;
+              background-size: 10px 10px;
+              background-image:url('images/detail-wind.png');
+            }
 					}
 
-					.bold{
-						font-family:'GothamNarrow-Medium',Sans Serif;
-						margin-right:2px;
-					}
-					.icon_wave{
-						color:#3e85ae;
-						margin-right:10px;
-						height:25px;
-						width:25px;
-						padding-left:18px;
-						background-size: 13px 7px;
-						background-image:url('images/detail-wave.png');
-					}
-					.icon_wave_freq{
-						color:#3e85ae;
-						margin-right:13px;
-						padding-left:14px;
-						background-size: 9px 9px;
-						background-image:url('images/detail-freq.png');
-					}
-					.icon_wind{
-						color:#cd3737;
-						margin-right:9px;
-						padding-left:15px;
-						background-size: 10px 10px;
-						background-image:url('images/detail-wind.png');
-					}
+					// .bold{
+					// 	font-family:'GothamNarrow-Medium',Sans Serif;
+					// 	margin-right:2px;
+					// }
+
 					.list-arrow{
 						position:absolute;
 						top:0px;
@@ -466,7 +482,7 @@ body {
 
 }
   .navigation {
-    z-index: 2
+    z-index: 15
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2)
 
     ul {
