@@ -43,58 +43,63 @@ $(function() {
   nav.hammer().on('touchstart',function(e){
         e.preventDefault();
 
-        if(!nav.hasClass('open'))
-        {
+        if(!nav.hasClass('open')){
           nav.addClass('pressed');
         }
     });
-    nav.hammer().on('touchend',function(e){
-      e.preventDefault();
 
-      var posY = e.originalEvent.changedTouches[0].pageY;
-      console.log(posY);
-      if(posY<88)
-      {
-        nav.toggleClass('open');
-        nav.removeClass('pressed');
+  nav.hammer().on('touchstart', function(e){
+    e.preventDefault();
+
+    if(!nav.hasClass('open'))
+      nav.addClass('pressed');
+  });
+
+  nav.hammer().on('touchend', function(e){
+    e.preventDefault();
+
+    nav.removeClass('pressed');
+  });
+
+  nav.hammer().on('touchmove', function(e){
+    e.preventDefault();
+
+    var posY = e.originalEvent.touches[0].pageY;
+
+    nav.toggleClass('pressed', posY <= 88);
+  });
+
+  nav.hammer().on('tap', function() {
+    nav.toggleClass('open');
+  });
+
+  nav.hammer().on('tap', 'li', function(e) {
+    e.preventDefault();
+
+    var changed = !$(this).hasClass('selected');
+
+    console.log('Tap tap', changed, nav.hasClass('open'));
+
+    if (nav.hasClass('open') && changed) {
+      var isSearch = $(this).hasClass('search');
+
+      nav.find('.selected').removeClass('selected');
+
+      $(this).addClass('selected');
+
+      $(e.target).addClass('selected');
+
+      detailBack.text($(this).text());
+
+      if (isSearch) {
+        list.hide();
+        search.show();
+      } else {
+        search.hide();
+        loadList();
       }
-
-    });
-    nav.hammer().on('touchmove',function(e){
-      e.preventDefault();
-      var posY = e.originalEvent.touches[0].pageY;
-      if(posY>88)
-      {
-        nav.removeClass('pressed');
-      }
-      else{
-        nav.addClass('pressed');
-      }
-    });
-    nav.hammer().on('tap', function() {
-      //nav.toggleClass('open');
-    });
-
-    nav.hammer().on('tap', 'li', function(e) {
-      e.preventDefault();
-      var changed = !$(this).hasClass('selected');
-
-      if (nav.hasClass('open') && changed) {
-        var isSearch = $(this).hasClass('search');
-
-        $(this).addClass('selected').siblings().removeClass('selected');
-
-        detailBack.text($(this).text());
-
-        if (isSearch) {
-          list.hide();
-          search.show();
-        } else {
-          search.hide();
-          loadList();
-        }
-      }
-    });
+    }
+  });
 
   $(document).on('touchstart click', function(e) {
     if (!$(e.target).closest(nav).length) {
