@@ -299,6 +299,91 @@ body {
   width: 1px;
   left: 0;
 }
+.detail{
+  font-family:'GothamNarrow-Bold',Sans-Serif
+  .navigation{
+    font-family: 'GothamNarrow-BlackItalic';
+    font-size:27px;
+    background-size:320px 50px;
+    background-image:url('images/nav-bar.png');
+    h1{
+      max-width:320px
+    }
+
+    
+    
+    .fav{
+      position:absolute;
+      background-size:19px 19px
+      background-image: url('images/icon-fav.png')
+      width:19px
+      height:19px
+      top:15px
+      right:20px
+      &.highlight{
+        background-image: url('images/icon-fav-selected.png')
+      }
+    }
+    
+    
+    nav{
+      a{
+          background:none
+          background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'><polygon fill='#ddd' points='12.849,13.424 19.397,6.876 16.548,4.025 10,10.575 3.451,4.026 0.602,6.875 10,16.272 '/></svg>");
+          background-repeat:no-repeat
+          background-position:left center
+          -webkit-transform:rotate(90deg)
+          buttonHeight = 40px
+          buttonMargin = (navigationHeight - buttonHeight) / 2
+          arrowSize = buttonHeight / 2
+          position: absolute
+          top: 20px
+          left: 12px
+          bottom: 10px
+          padding: 0 15px 0 5px
+          color: white
+          text-decoration: none
+          width:12px
+          max-width: 120px
+          line-height: buttonHeight
+          &:after {
+            background:none
+            opacity:0
+            
+          }
+        }
+        background:none
+        
+    }
+  }
+  
+  .detail-content{
+    position:absolute
+    top:50px
+    left:0px
+    height:364px
+    width:320px
+    padding:0px
+    margin:0px
+    
+    overflow-x:hidden
+    overflow-y:scroll
+    
+    
+    .placeholder{
+      position:absolute
+      top:0px
+      left:0px
+      height:998px
+      width:320px
+      background-size:320px 998px
+      background-repeat:no-repeat
+      background-image:url('images/detailed-view.jpg')
+      
+      overflow:hidden
+    }
+  }
+}
 
 #overview {
 
