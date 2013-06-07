@@ -8,6 +8,11 @@ $(function() {
   var search = overview.find('.search-bar');
   var detailBack = detail.find('.back');
   var timeline = $('#timeline');
+  var timelineLine = $('#timeline-line');
+  var timelineActuator = $('#timeline').find('.actuator');
+
+  var timelineDayLabels = ['Today', 'Tomorrow', 'Friday'];
+  var timelineTimeLabels = ['03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00']
 
   var timeline_labels = $('#timeline .label');
   var timeline_actuator_days = ["TODAY", "TOMORROW", "FRIDAY"];
@@ -141,19 +146,46 @@ $(function() {
   });
 
   // Make graphs
+  var graphs = $('.list a .graph');
+
+  graphs.each(function() {
+    var times = [];
+    var list = $(this);
+    var waveLength = Math.random() * 0.5;
+    var waveOffset = Math.random() * Math.PI;
+
+    _.times(3, function(i) {
+      var day = $('<div/>', { 'class': 'day' });
+
+      _.times(8, function(k) {
+        waveLength += Math.random() * 0.05 - 0.02;
+        var index = i + k + (i*5);
+        var time = $('<div/>').css({
+          height: (Math.sin(index * waveLength + waveOffset) + 1) * 40 + 15 + (Math.random() * 10) + '%',
+          left: (k * 13) + 'px'
+        });
+
+        day.append(time);
+        times.push(time);
+      });
+
+      list.append(day);
+    });
+
+    $(this).data('times', times);
+  });
 
   // Timeline
 
   var timelineWidth = 320;
 
-  timeline.find('.actuator').on('touchstart', function(e) {
+  timelineActuator.on('touchstart', function(e) {
     e.preventDefault();
 
-    var $actuator = $(this).addClass('active');
+    timelineActuator.addClass('active');
     var $arrow = $(this).find('.arrow');
-    var $line = $('#timeline-line');
 
-    var width = $actuator.outerWidth();
+    var width = timelineActuator.outerWidth();
     var offset = e.originalEvent.touches[0].clientX - $(this).position().left;
 
     var move = function(e) {
@@ -166,7 +198,7 @@ $(function() {
       if(handlePos === 0 || handlePos === 1) {
         var multiplier = handlePos === 0 ? -1 : 1;
         var space = width / 2 - (offset - width / 2) * multiplier;
-        var distance = Math.abs(x - ($actuator.position().left + (width * handlePos)));
+        var distance = Math.abs(x - (timelineActuator.position().left + (width * handlePos)));
         var arrowPos = (1 - (distance / space));
         var arrowX = (arrowPos * width / 2) * multiplier;
         pos += ((width / 2) / timelineWidth) * arrowPos * multiplier;
@@ -178,11 +210,11 @@ $(function() {
 
       timeline.trigger('change', pos);
 
-      $actuator.css('transform', 'translateX(' + handleX + 'px) translateZ(0)')
+      timelineActuator.css('transform', 'translateX(' + handleX + 'px) translateZ(0)')
     }
 
     var end = function(e) {
-      $actuator.removeClass('active');
+      timelineActuator.removeClass('active');
 
       $(document).off('touchmove', move);
       $(document).off('touchend', end);
@@ -192,7 +224,39 @@ $(function() {
     $(document).on('touchend', end);
   });
 
+  var graphItems = $('.graph .day div');
+  var actuatorDay = timelineActuator.find('.day');
+  var actuatorTime = timelineActuator.find('.time');
+  var currentDayLabel = null;
+  var currentTimeLabel = null;
+  var currentTime = null;
+
   timeline.on('change', function(e, pos) {
-    console.log(arguments);
+    var x = pos * 320;
+    var day = Math.floor(pos * 3);
+    var time = Math.floor(Math.min(Math.max(x - (day * 103) - (6 * day), 0), 100) / (103 / 8));
+
+    var dayLabel = timelineDayLabels[day];
+    var timeLabel = timelineTimeLabels[time];
+
+    if(dayLabel != currentDayLabel) {
+      currentDayLabel = dayLabel;
+      actuatorDay.text(dayLabel);
+    }
+
+    if(timeLabel != currentTimeLabel) {
+      currentTimeLabel = timeLabel;
+      actuatorTime.text(timeLabel);
+    }
+
+    if(time !== currentTime) {
+      graphItems.removeClass('active');
+      graphs.each(function() {
+        $(this).find('.day div').eq(time + (day * 8)).addClass('active');
+      });
+      currentTime = time;
+    }
+
+    timelineLine.css('left', pos * timelineWidth);
   })
 });

@@ -368,7 +368,7 @@ body {
 }
 #timeline-line {
   position: absolute;
-  border-left: 2px dashed rgba(0,0,0,0.2);
+  border-left: 1px dashed rgba(0,0,0,0.2);
   top: 60px;
   height: 100%;
   width: 1px;
@@ -423,6 +423,31 @@ body {
 #overview .list li a span {
   position: absolute;
   margin-left: 109px;
+}
+#overview .list li a .graph {
+  position: absolute;
+  bottom: 0;
+  left: -1px;
+  width: 400px;
+  height: 30px;
+}
+#overview .list li a .graph .day {
+  position: relative;
+  width: 106px;
+  height: 100%;
+  float: left;
+  margin-right: 3px;
+}
+#overview .list li a .graph .day div {
+  position: absolute;
+  bottom: 0;
+  width: 12px;
+  float: left;
+  background: #a2cbe3;
+  border: 1px #fff solid;
+}
+#overview .list li a .graph .day div.active {
+  background: #3e85ae;
 }
 #overview .list li a .datas {
   position: absolute;
@@ -662,18 +687,5 @@ body {
   -webkit-appearance: none;
   -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-}
-#overview .loader {
-  display: none;
-  background: url("images/loader.gif");
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -16px;
-}
-#overview .loader.active {
-  display: block;
 }
 
