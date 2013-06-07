@@ -191,6 +191,7 @@ $(function() {
   var actuatorTime = timelineActuator.find('.time');
   var currentDayLabel = null;
   var currentTimeLabel = null;
+  var currentTime = null;
 
   timeline.on('change', function(e, pos) {
     var x = pos * 320;
@@ -208,6 +209,14 @@ $(function() {
     if(timeLabel != currentTimeLabel) {
       currentTimeLabel = timeLabel;
       actuatorTime.text(timeLabel);
+    }
+
+    if(time !== currentTime) {
+      graphItems.removeClass('active');
+      graphs.each(function() {
+        $(this).find('.day div').eq(time + (day * 8)).addClass('active');
+      });
+      currentTime = time;
     }
 
     timelineLine.css('left', pos * timelineWidth);

@@ -512,7 +512,7 @@ body {
   border: 1px #fff solid;
 }
 #overview .list li a .graph .day div.active {
-  background: #00f;
+  background: #3e85ae;
 }
 #overview .loader {
   display: none;
