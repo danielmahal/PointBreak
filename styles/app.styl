@@ -258,7 +258,7 @@ body {
 
 #timeline-line {
   position: absolute;
-  border-left: 2px dashed rgba(0,0,0,0.2);
+  border-left: 1px dashed rgba(0,0,0,0.2);
   top: 60px;
   height: 100%;
   width: 1px;
@@ -412,19 +412,33 @@ body {
         width: 100%
         position:relative;
 
-        svg{
-          position:absolute;
-      width: 100%;
-      left:0px;
-      height:100px;
-      bottom:0px;
-      padding:0px;
-      margin:0px;
-      fill:#c7dce0;
-        }
+        .graph {
+          position: absolute
+          bottom: 0
+          left: -1px
+          width: 400px
+          height: 30px
 
-        svg rect.selected{
-       fill:rgba(69,126,230,0.7);
+          .day {
+            position: relative
+            width: 106px
+            height: 100%
+            float: left
+            margin-right: 3px
+
+            div {
+              position: absolute
+              bottom: 0
+              width: 12px
+              float: left
+              background: #a2cbe3
+              border: 1px white solid
+
+              &.active {
+                background: blue
+              }
+            }
+          }
         }
       }
     }
