@@ -39,7 +39,9 @@ $(function() {
     }, 600);
 
   }
-
+  
+  $('.navigation .fav').on('tap',function(){$(this).toggleClass('highlight')});
+  
   nav.hammer().on('touchstart',function(e){
         e.preventDefault();
 
