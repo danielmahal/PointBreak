@@ -371,6 +371,19 @@ body {
 .detail {
   font-family: 'GothamNarrow-Bold', Sans-Serif;
 }
+.detail .timeline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  height: 430px;
+  background: url("images/detail-timeline.png");
+  -webkit-background-size: 320px 430px;
+  -moz-background-size: 320px 430px;
+  background-size: 320px 430px;
+  z-index: 5;
+}
 .detail .navigation {
   font-family: 'GothamNarrow-BlackItalic';
   font-size: 27px;
@@ -419,7 +432,7 @@ body {
   position: absolute;
   top: 50px;
   left: 0px;
-  height: 364px;
+  height: 366px;
   width: 320px;
   padding: 0px;
   margin: 0px;
